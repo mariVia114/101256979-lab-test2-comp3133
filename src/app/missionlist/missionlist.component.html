@@ -1,0 +1,17 @@
+<div style="padding: 50px; background-color: lightskyblue;">
+<mat-card-title>Mission List</mat-card-title>
+    <mat-card  *ngFor="let d of missions" style="max-width: 400px; height: 500px; margin: 40px; background-color: #EEC9BC;">
+        <mat-card-header>
+            <!-- <mat-icon mat-card-avatar><img mat-card-avatar [src]="d['links']['mission_patch']" alt="teso" /></mat-icon> -->
+            <mat-card-title>Mission name: {{d["mission_name"]}}</mat-card-title>
+            <mat-card-subtitle>Launch year: {{d["launch_year"]}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-divider></mat-divider>
+        <mat-card-content style="text-align: center;">
+            <p>Details: {{d["details"]}} </p>
+            <img mat-card-xl-image [src]="d['links']['mission_patch']" alt="teso" />	
+        </mat-card-content>
+    </mat-card>
+    
+</div>
+
