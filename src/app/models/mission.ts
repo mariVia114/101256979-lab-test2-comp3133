@@ -6,5 +6,6 @@ export interface Mission{
     links:{
         mission_patch:string
     };
+    launchYear: Number;
  
 }

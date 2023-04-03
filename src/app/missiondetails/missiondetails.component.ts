@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Mission } from '../models/mission';
+import { ActivatedRoute } from '@angular/router';
+import { SpacexLaunchService } from '../services/spacex-launch.service';
 
 
 
@@ -9,6 +10,13 @@ import { Mission } from '../models/mission';
   styleUrls: ['./missiondetails.component.css']
 })
 export class MissiondetailsComponent{
-@Input() mission?: Mission;
-  
+@Input() mission: any;
+
+    constructor(private route: ActivatedRoute, private spaceApi: SpacexLaunchService){}
+    ngOnInit(){
+      const flightNumber = this.route.snapshot.paramMap.get('flight_number');
+      this.spaceApi.getMissionByFlightNumber(flightNumber!).subscribe((data: any) => {
+      this.mission = data;
+    });
+    }
 }

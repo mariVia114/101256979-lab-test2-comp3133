@@ -8,7 +8,9 @@ import {MatCardModule} from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
 import { MissiondetailsComponent } from './missiondetails/missiondetails.component';
 import { RouterModule, Routes } from '@angular/router';
-
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms'
+import { MatInputModule } from '@angular/material/input';
 @NgModule({
   
   declarations: [
@@ -23,6 +25,9 @@ import { RouterModule, Routes } from '@angular/router';
     MatCardModule,
     MatDividerModule,
     RouterModule,
+    MatFormFieldModule,
+    FormsModule,
+    MatInputModule
 
   ],
   providers: [],

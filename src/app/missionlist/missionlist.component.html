@@ -1,8 +1,11 @@
 <div style="padding: 50px; background-color: lightskyblue;">
-    <!-- <mat-form-field>
-  <mat-label>Filter by Year</mat-label>
-  <input matInput type="number" [(ngModel)]="launchYear" placeholder="Enter a year">
-</mat-form-field> -->
+    <!-- <div>
+      <input type="number"
+      placeholder="Filter by year" 
+      style="width:450px; padding:2px 20 px; margin: 10px 0px; height:30px"
+      [(ngModel)]="filterText"
+      >
+    </div> -->
 
 <mat-card-title>Mission List</mat-card-title>
     <mat-card  *ngFor="let mission of missions" style="max-width: 400px; height: 700px; margin: 100px; background-color: #EEC9BC;">
@@ -17,7 +20,7 @@
             <img mat-card-xl-image [src]="mission['links']['mission_patch']" alt="teso" />	
         </mat-card-content>
         
-        <button mat-mini-fab color="warn" routerLink="/details"  [class.selected]="mission === selectedMission"
+        <button mat-mini-fab color="warn"
          type="button" (click)="showDetails(mission)" >
             More Details
         </button>

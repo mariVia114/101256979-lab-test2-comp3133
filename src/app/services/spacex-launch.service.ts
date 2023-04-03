@@ -14,7 +14,11 @@ export class SpacexLaunchService {
     return this.http.get(<any>this.apiURL);
   }
 
-  public getLaunchesByYear(year: string): Observable<Mission[]> {
-    return this.http.get<Mission[]>(`${this.apiURL}?launch_year=${year}`);
+  public getLaunchesByYear(launchYear: number): Observable<Mission[]> {
+    return this.http.get<Mission[]>(`${this.apiURL}?launch_year=${launchYear}`);
   }
+
+  getMissionByFlightNumber(flightNumber: string) {
+  return this.http.get(`https://api.spacexdata.com/v3/launches/${flightNumber}`);
+}
 }

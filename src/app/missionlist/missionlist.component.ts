@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Mission } from '../models/mission';
 import { SpacexLaunchService } from '../services/spacex-launch.service';
-
+import { Router } from'@angular/router'
 
 @Component({
   selector: 'app-missionlist',
@@ -11,9 +11,11 @@ import { SpacexLaunchService } from '../services/spacex-launch.service';
 export class MissionlistComponent implements OnInit {
 
   missions = [];
+  filteredMissions = []
   selectedMission? : Mission;
 
-  constructor(private spaceService: SpacexLaunchService){}
+
+  constructor(private router: Router , private spaceService: SpacexLaunchService){}
 
   ngOnInit(): void {
     this.spaceService.getAllMissions().subscribe({
@@ -33,6 +35,10 @@ export class MissionlistComponent implements OnInit {
 
   showDetails(mission: Mission): void{
         this.selectedMission = mission;
+        const flightNumber = mission?.flight_number;
+        if (flightNumber) {
+              this.router.navigate(['/details', flightNumber]);
+          }
         console.log(this.selectedMission);
   }
 
