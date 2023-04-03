@@ -1,17 +1,22 @@
 <div style="padding: 50px; background-color: lightskyblue;">
 <mat-card-title>Mission List</mat-card-title>
-    <mat-card  *ngFor="let d of missions" style="max-width: 400px; height: 500px; margin: 40px; background-color: #EEC9BC;">
+    <mat-card  *ngFor="let mission of missions" style="max-width: 400px; height: 700px; margin: 100px; background-color: #EEC9BC;">
         <mat-card-header>
             <!-- <mat-icon mat-card-avatar><img mat-card-avatar [src]="d['links']['mission_patch']" alt="teso" /></mat-icon> -->
-            <mat-card-title>Mission name: {{d["mission_name"]}}</mat-card-title>
-            <mat-card-subtitle>Launch year: {{d["launch_year"]}}</mat-card-subtitle>
+            <mat-card-title>Mission name: {{mission["mission_name"]}}</mat-card-title>
+            <mat-card-subtitle>Launch year: {{mission["launch_year"]}}</mat-card-subtitle>
         </mat-card-header>
         <mat-divider></mat-divider>
         <mat-card-content style="text-align: center;">
-            <p>Details: {{d["details"]}} </p>
-            <img mat-card-xl-image [src]="d['links']['mission_patch']" alt="teso" />	
+            <p>Details: {{mission["details"]}} </p>
+            <img mat-card-xl-image [src]="mission['links']['mission_patch']" alt="teso" />	
         </mat-card-content>
+        
+        <button mat-mini-fab color="warn" routerLink="/details"  [class.selected]="mission === selectedMission"
+         type="button" (click)="showDetails(mission)" >
+            More Details
+        </button>
     </mat-card>
     
 </div>
-
+<app-missiondetails [mission]="selectedMission"></app-missiondetails>

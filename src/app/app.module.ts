@@ -6,12 +6,15 @@ import { MissionlistComponent } from './missionlist/missionlist.component';
 import { AppRoutingModule } from './app-routing.module';
 import {MatCardModule} from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
-
+import { MissiondetailsComponent } from './missiondetails/missiondetails.component';
+import { RouterModule, Routes } from '@angular/router';
 
 @NgModule({
+  
   declarations: [
     AppComponent,
-    MissionlistComponent
+    MissionlistComponent,
+    MissiondetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -19,8 +22,11 @@ import {MatDividerModule} from '@angular/material/divider';
     AppRoutingModule,
     MatCardModule,
     MatDividerModule,
+    RouterModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
+  
 })
 export class AppModule { }

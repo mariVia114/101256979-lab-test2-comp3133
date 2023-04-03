@@ -11,6 +11,7 @@ import { SpacexLaunchService } from '../services/spacex-launch.service';
 export class MissionlistComponent implements OnInit {
 
   missions = [];
+  selectedMission? : Mission;
 
   constructor(private spaceService: SpacexLaunchService){}
 
@@ -28,6 +29,11 @@ export class MissionlistComponent implements OnInit {
         console.log('error: ' + err)
       },
     })
+  }
+
+  showDetails(mission: Mission): void{
+        this.selectedMission = mission;
+        console.log(this.selectedMission);
   }
 
 }
