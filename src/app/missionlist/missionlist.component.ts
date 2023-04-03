@@ -10,8 +10,9 @@ import { Router } from'@angular/router'
 })
 export class MissionlistComponent implements OnInit {
 
-  missions = [];
-  filteredMissions = []
+  missions: any[] = [];
+  filteredMissions: any[] = []
+  filterYear?: number;
   selectedMission? : Mission;
 
 
@@ -21,6 +22,7 @@ export class MissionlistComponent implements OnInit {
     this.spaceService.getAllMissions().subscribe({
       next: (res: any) => {
         this.missions = res
+        this.filteredMissions = res;
         console.log(this.missions)
 
       },
@@ -41,5 +43,15 @@ export class MissionlistComponent implements OnInit {
           }
         console.log(this.selectedMission);
   }
+
+  applyFilter(): void {
+    if (this.filterYear) {
+      console.log(this.filterYear)
+      this.filteredMissions = this.missions.filter(mission => mission.launch_year  == this.filterYear);
+    } else {
+      this.filteredMissions = this.missions;
+    }
+  }
+
 
 }
