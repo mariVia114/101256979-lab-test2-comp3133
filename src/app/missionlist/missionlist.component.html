@@ -1,11 +1,12 @@
 <div style="padding: 50px; background-color: lightskyblue;">
-  <mat-form-field>
-  <input matInput type="number" [(ngModel)]="filterYear" placeholder="Enter year">
-</mat-form-field>
-<button mat-button (click)="applyFilter()">Filter</button>
+  <h1>Mission Lists</h1>
+    <mat-form-field>
+        <input matInput type="number" [(ngModel)]="filterYear" placeholder="Enter year">
+    </mat-form-field>
+    <button mat-button (click)="applyFilter()">Filter</button>
 
-<mat-card-title>Mission List</mat-card-title>
-    <mat-card  *ngFor="let mission of filteredMissions" style="max-width: 400px; height: 700px; margin: 100px; background-color: #EEC9BC;">
+    <div style="display: flex; flex-wrap: wrap; flex-direction: row;">
+    <mat-card  *ngFor="let mission of filteredMissions" style="display: flex; flex-direction: column; width: 250px; height: 700px; margin: 10px; background-color: #EEC9BC;">
         <mat-card-header>
             <!-- <mat-icon mat-card-avatar><img mat-card-avatar [src]="d['links']['mission_patch']" alt="teso" /></mat-icon> -->
             <mat-card-title>Mission name: {{mission["mission_name"]}}</mat-card-title>
@@ -14,14 +15,15 @@
         <mat-divider></mat-divider>
         <mat-card-content style="text-align: center;">
             <p>Details: {{mission["details"]}} </p>
-            <img mat-card-xl-image [src]="mission['links']['mission_patch']" alt="teso" />	
-        </mat-card-content>
-        
-        <button mat-mini-fab color="warn"
+            <img mat-card-md-image [src]="mission['links']['mission_patch']" alt="teso" />	
+            <br>
+            <button mat-mini-fab color="warn"
          type="button" (click)="showDetails(mission)" >
             More Details
         </button>
+        </mat-card-content>
+        
     </mat-card>
-    
+    </div>
 </div>
 <app-missiondetails [mission]="selectedMission"></app-missiondetails>
